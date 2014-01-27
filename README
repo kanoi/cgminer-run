@@ -1,0 +1,36 @@
+cgminer-run
+===========
+
+Running cgminer on linux
+
+sem.c
+-----
+A program to keep a command of your choice always running on a linux computer
+Simply create a script (see cgminer-cron.sh below), put it in crontab to
+run every minute, and you're done
+
+Compile with 'make sem'
+cp -pv sem /usr/local/bin
+
+It will only allow the cgminer-cron.sh to be run once on a computer and if
+cgminer-cron.sh crashes, gets killed or fails for some reason, it will release
+the semaphore lock and the next run of it (within a minute) will start it again
+
+cgminer-cron.sh
+---------------
+An example script to keep cgminer running
+Read it and change it as necessary
+Put it in /usr/local/bin
+chmod +x /usr/local/bin/cgminer-cron.sh
+
+Then add it to crontab like:
+* * * * * root /usr/local/bin/cgminer-cron.sh
+(or replace root with whatever other account you want to run cgminer)
+
+cgminer.sh
+----------
+A sample cgminer run script to keep cgminer running and logging output
+into your home directory
+You either need a ~/.cgminer/cgminer.conf file with your settings and pools or
+edit cgminer.sh to add your settings and pools
+Don't forget to chmod +x cgminer.sh
