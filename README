@@ -24,7 +24,8 @@ Put it in /usr/local/bin
 chmod +x /usr/local/bin/cgminer-cron.sh
 
 Then add it to crontab like:
-* * * * * root /usr/local/bin/cgminer-cron.sh
+* * * * * root screen -d -m -S cgm /usr/local/bin/cgminer-cron.sh
+
 (or replace root with whatever other account you want to run cgminer)
 
 cgminer.sh
