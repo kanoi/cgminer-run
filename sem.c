@@ -39,7 +39,7 @@ void usAge(char *prog)
 		slash = prog;
 
 	fprintf(stderr, "usAge: %s [-v] [-w] filename cmd [args...]\n", slash);
-	fprintf(stderr, " where -v = don't print the process return status\n");
+	fprintf(stderr, " where -v = print the process return status\n");
 	fprintf(stderr, " where -w = wait to get it - retry every 1 second\n");
 	fprintf(stderr, " where filename = the semaphore file\n");
 	fprintf(stderr, " where cmd = the cmd to execute\n");
