@@ -10,7 +10,7 @@ Simply create a script (see cgminer-cron.sh below), put it in crontab to
 run every minute, and you're done
 
 Compile with 'make sem'
-cp -pv sem /usr/local/bin
+cp -pv sem /usr/local/bin/
 
 It will only allow the cgminer-cron.sh to be run once on a computer and if
 cgminer-cron.sh crashes, gets killed or fails for some reason, it will release
@@ -30,6 +30,19 @@ If your linux has an /etc/crontab then you can add it to crontab as:
 If you use cronie or some other cron implementation that has a per user crontab
 then use the command to edit your crontab file (e.g. crontab -e) and add
 * * * * * screen -d -m -S cgm /usr/local/bin/cgminer-cron.sh
+
+If the cgminer screen (cgm) doesn't appear after a couple of minutes it will
+usually mean a permission error or a file not in the correct place or not +x
+You can usually see what the problem is by running cgminer-cron.sh and it
+should spit out the error that is causing it to fail i.e. run:
+ /usr/local/bin/cgminer-cron.sh
+then
+ screen -ls
+should list a cgm screen - if there were no problems or errors
+
+Note that permission issues may stop it from running if you are running it in
+cron as a different user to what you are logged in as and the permissions are
+not setup to allow that user for all scripts and programs being used
 
 cgminer.sh
 ----------
