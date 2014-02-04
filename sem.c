@@ -55,7 +55,6 @@ int main(int argc, char *argv[])
 	int	*sem;
 	struct	semid_ds seminfo;
 	union	semun opt;
-	int	ret;
 	pid_t	cpid;
 	pid_t	wpid;
 	int	verbose = 0;
