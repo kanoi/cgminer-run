@@ -22,6 +22,8 @@
 #include <getopt.h>
 #include <malloc.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
 
 union semun {
 	int val;
@@ -159,7 +161,7 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	wpid = wait(cpid, NULL, 0);
+	wpid = waitpid(cpid, NULL, 0);
 
 	if (verbose)
 		fprintf(stderr, "Child process (%d) exited (%d)\n", cpid, wpid);
