@@ -23,10 +23,13 @@ Read it and change it as necessary
 Put it in /usr/local/bin
 chmod +x /usr/local/bin/cgminer-cron.sh
 
-Then add it to crontab like:
+If your linux has an /etc/crontab then you can add it to crontab as:
 * * * * * root screen -d -m -S cgm /usr/local/bin/cgminer-cron.sh
-
 (or replace root with whatever other account you want to run cgminer)
+
+If you use cronie or some other cron implementation that has a per user crontab
+then use the command to edit your crontab file (e.g. crontab -e) and add
+* * * * * screen -d -m -S cgm /usr/local/bin/cgminer-cron.sh
 
 cgminer.sh
 ----------
