@@ -7,4 +7,4 @@ cmddir="/opt/cgminer/"
 #
 touch "$semfile"
 cd "$cmddir"
-sem "$semfile" "${cmddir}cgminer.sh"
+/usr/local/bin/sem "$semfile" "${cmddir}cgminer.sh"
