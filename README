@@ -3,6 +3,24 @@ cgminer-run
 
 Running cgminer on linux
 
+This requires the linux screen command to be installed on your system
+The command:
+ screen -ls
+will probably enlighten you to the installation status of the screen command
+and maybe even tell you how to install it, if it isn't already installed
+
+If it isn't already installed, here's some hints on how to install it on
+some linux versions:
+
+On Ubuntu and derivatives:
+ apt-get install screen
+
+On Pacman based systemd (e.g. Arch):
+ pacman -S screen
+
+On Yum based systems (e.g. Fedora):
+ yum install screen
+
 sem.c
 -----
 A program to keep a command of your choice always running on a linux computer
