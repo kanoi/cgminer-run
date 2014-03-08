@@ -30,9 +30,25 @@ run every minute, and you're done
 Compile with 'make sem'
 cp -pv sem /usr/local/bin/
 
-It will only allow the cgminer-cron.sh to be run once on a computer and if
-cgminer-cron.sh crashes, gets killed or fails for some reason, it will release
-the semaphore lock and the next run of it (within a minute) will start it again
+It will only allow the sem command in the cgminer-cron.sh to successfully
+run cgminer.sh once at a time on a computer
+Each other time sem is run, while the first one is still running, it will
+immediately return and not start the cgminer.sh command
+If cgminer.sh crashes, gets killed, or fails for some reason, it will release
+sem's semaphore lock and the next run of cgminer-cron.sh after that, within
+a minute, will start cgminer.sh again
+
+The system lock used by sem is based on the inode of the semfile passed to sem
+Two different invocations of sem with two different semfiles will produce
+two different, independent locks that will not stop each other from running
+Also, if you delete the semfile while one sem is still using it, and create a
+new semfile of the same name and run sem with that new file, it will also
+produce two different, independent locks
+The touch command used in cgminer-cron.sh makes sure the semfile exists, but
+doen't affect the lock produced, if the semfile does already exist
+Since the lock is actually a semaphore, if the system should shutdown or
+crash for any reason, the lock will certainly be released and the semfile
+does not need to be cleaned up/deleted when the system restarts
 
 cgminer-cron.sh
 ---------------
