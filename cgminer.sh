@@ -1,8 +1,9 @@
 #!/bin/bash
 #
 # This test makes sure the clock has been set
-# Usually the clock isn't correct until the internet is available
-#  also mining is usually pointless until it's probably correct
+# On a computer without a battery backed-up clock, the clock
+# usually isn't correct until the internet is available
+# Also mining is usually pointless until it's probably correct
 year="`date +%Y`"
 if [ "$year" -lt "2014" ] ; then
  echo "Date '`date`' - clock is wrong - no point mining yet ..."
